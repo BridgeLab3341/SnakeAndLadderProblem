@@ -14,7 +14,6 @@ namespace SnakeAndLadderProblem
             int playerPosition = 0;
             Random random = new Random();
             int die=random.Next(1,7);
-            //Console.WriteLine("Player Position: {0}",die);
             while(playerPosition<Winning_Position)
             {
                 int option = random.Next(0, 3);
@@ -28,9 +27,21 @@ namespace SnakeAndLadderProblem
                         Console.WriteLine("Player Position = " + playerPosition);
                         break;
                     case Snake:
-                        playerPosition -= die;
+                        int roll = die;
+                        if(playerPosition - roll >0)
+                        {
+                            playerPosition -= die;
+                        }
+                        else
+                        {
+                            playerPosition = 0;
+                        }
                         Console.WriteLine("Player Position = " + playerPosition);
                         break;
+                }
+                if(playerPosition == Winning_Position)
+                {
+                    Console.WriteLine("Player Winning Position ----> " + playerPosition);
                 }
             }           
         }
